@@ -25,7 +25,7 @@ export default function Productos() {
   }
 
   return (
-    <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+    <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 bg-[#f7f6f9]">
       <div className="mb-8 flex justify-between gap-4 items-center">
         <div>
           <p className="text-xl uppercase text-black font-bold">New Arrivals</p>
@@ -38,7 +38,7 @@ export default function Productos() {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-3 xl:grid-cols-4 xl:gap-6">
+      <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 xl:gap-6">
         {productos.map((producto) => (
           <article
             key={producto.id}
@@ -51,7 +51,7 @@ export default function Productos() {
               <img
                 src={producto.image}
                 alt={producto.title}
-                className="mx-auto h-36 w-full object-contain transition duration-500 hover:scale-105"
+                className="mx-auto h-36 w-full object-contain transition duration-500 hover:scale-105 cursor-pointer"
               />
             </div>
             <div className="space-y-3 p-4">
@@ -59,7 +59,7 @@ export default function Productos() {
                 <p className="text-[14px] uppercase text-slate-400">
                   {producto.category}
                 </p>
-                <h2 className="mt-2 text-sm font-semibold text-slate-900 overflow-hidden text-ellipsis truncate">
+                <h2 className="mt-2 text-sm font-semibold text-slate-900 overflow-hidden text-ellipsis truncate cursor-pointer">
                   {producto.title}
                 </h2>
               </div>
@@ -67,7 +67,7 @@ export default function Productos() {
                 <p className="text-md font-semibold text-blue-700 text-start ml-1">
                   ${producto.price.toFixed(2)}
                 </p>
-                <button className="rounded-full bg-slate-900 px-3 py-2 text-xs font-semibold text-white transition hover:bg-slate-800">
+                <button className="rounded-full bg-slate-900 px-3 py-2 text-xs font-semibold text-white transition hover:bg-slate-800 cursor-pointer active:scale-95 duration-150">
                   Add to Cart
                 </button>
               </div>

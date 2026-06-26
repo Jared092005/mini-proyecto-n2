@@ -33,7 +33,7 @@ export default function SearchBar() {
               className="hidden lg:inline outline-none px-6 py-3 rounded-2xl bg-gray-200"
               placeholder="🔍 Search Products..."
             />
-            <div className="flex">
+            <div className="hidden lg:flex">
               <button className="bg-white h-18 w-17 flex items-center justify-center rounded-full active:scale-90 transition duration-150 cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -79,29 +79,37 @@ export default function SearchBar() {
           </div>
         </div>
       </header>
-      <section className="w-full relative">
+      <section className="relative w-full overflow-hidden">
         <img
           src={imgPerson}
           alt="persona con un abrigo"
-          className="h-130 object-cover overflow-hidden lg:overflow-auto"
+          className="h-130 w-full object-cover sm:h-155 lg:h-180"
         />
-        <article className="absolute flex flex-col gap-4 top-20 left-4 z-30 text-center px-4">
-          <p className="font-bold text-blue-600">NEW COLLECTION 2024</p>
-          <p className="text-white text-4xl font-bold">
-            Redefine Your Everyday Style
+        <div className="absolute inset-0 bg-black/70" />
+        <article className="absolute inset-x-4 top-16 z-30 mx-auto flex max-w-4xl flex-col gap-4 px-4 text-left text-white sm:top-24 sm:px-6 lg:left-16 lg:top-28 lg:max-w-3xl lg:px-0">
+          <span className="hidden lg:inline-flex rounded-full bg-blue-600/15 px-3 py-1 text-xs font-semibold uppercase tracking-[0.26em] text-blue-200">
+            NEW COLLECTION 2024
+          </span>
+          <h2 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
+            Redefine Your{" "}
+            <span className="lg:text-blue-400">Everyday Style</span>
+          </h2>
+          <p className="max-w-xl text-sm text-slate-200 sm:text-base">
+            Explore our curated selection of premium electronics and
+            high-fashion apparel tailored for the modern lifestyle.
           </p>
-          <p className="text-gray-300">
-            Discover our curated collection of premium essentials designed for
-            the modern lifestyle.
-          </p>
-          <button className="bg-blue-600 w-full p-4 rounded-lg text-white font-semibold active:bg-blue-800 active:scale-90 transition duration-150">
-            Shop Collection
-          </button>
-          <button className="bg-gray-500/70 p-4 rounded-lg text-white font-semibold active:bg-gray-700/70 active:scale-90 transition duration-150">
-            View Lookbook
-          </button>
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+            <button className="inline-flex w-full items-center justify-center rounded-2xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 sm:w-auto active:scale-90">
+              Shop Collection
+            </button>
+            <button className="inline-flex lg:hidden w-full items-center justify-center rounded-2xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20 sm:w-auto active:scale-90">
+              View Lookbook
+            </button>
+            <button className="hidden lg:inline-flex w-full items-center justify-center rounded-2xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20 sm:w-auto active:scale-90">
+              View Deal
+            </button>
+          </div>
         </article>
-        <div className="absolute inset-0 bg-black/60 z-20"></div>
       </section>
     </>
   );

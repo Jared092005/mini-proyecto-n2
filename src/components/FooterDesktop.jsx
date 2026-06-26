@@ -2,7 +2,7 @@
   return (
     <footer className="hidden bg-[#f7f6f9] text-slate-700 lg:block">
       <div className="mx-auto max-w-7xl px-6 py-16">
-        <div className="grid gap-10 xl:grid-cols-[1.8fr_1fr_1fr_1.6fr]">
+        <div className="grid gap-10 lg:grid-cols-[1.8fr_1fr_1fr_1.6fr]">
           <div className="space-y-6">
             <div>
               <h2 className="text-2xl font-bold uppercase tracking-[0.24em] text-slate-900">

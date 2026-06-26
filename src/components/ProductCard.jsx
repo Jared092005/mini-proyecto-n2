@@ -28,7 +28,11 @@ export default function Productos() {
     <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8 bg-[#f7f6f9]">
       <div className="mb-8 flex justify-between gap-4 items-center">
         <div>
-          <p className="text-xl uppercase text-black font-bold">New Arrivals</p>
+          <p className="text-xl uppercase text-black font-bold lg:hidden">
+            New Arrivals
+          </p>
+          <p className="font-bold text-2xl">Trending Now</p>
+          <p className="text-gray-600 mt-2">Our most popular items this week</p>
         </div>
         <div className="">
           <button className="items-center rounded-full px-4 py-2 text-md font-semibold text-blue-600">

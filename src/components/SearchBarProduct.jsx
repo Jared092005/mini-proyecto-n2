@@ -1,16 +1,8 @@
-import { useState } from "react";
 import imgMenu from "../../public/icons/menu-svgrepo-com.svg";
 import imgSearch from "../../public/icons/search-svgrepo-com.svg";
 import imgBag from "../../public/icons/shopping-bag-svgrepo-com.svg";
-import imgPerson from "../../public/images/image.png";
 
-export default function SearchBar({
-  searchQuery = "",
-  onSearch,
-  showBanner = true,
-}) {
-  const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
-
+export default function SearchBar({ searchQuery = "", onSearch }) {
   const handleSearch = (event) => {
     onSearch?.(event.target.value);
   };
@@ -31,7 +23,6 @@ export default function SearchBar({
                 type="button"
                 aria-label="Buscar productos"
                 className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-white shadow-sm"
-                onClick={() => setMobileSearchOpen((open) => !open)}
               >
                 <img src={imgSearch} alt="Buscar" className="w-6" />
               </button>
@@ -114,64 +105,6 @@ export default function SearchBar({
           </div>
         </div>
       </header>
-      {showBanner && (
-        <section className="relative w-full overflow-hidden">
-          <img
-            src={imgPerson}
-            alt="persona con un abrigo"
-            className="h-130 w-full object-cover sm:h-155 lg:h-180"
-          />
-          <div className="absolute inset-0 bg-black/70" />
-          {mobileSearchOpen && (
-            <div className="absolute inset-x-4 top-6 z-40 rounded-3xl bg-white/95 p-4 shadow-2xl backdrop-blur-md">
-              <div className="relative">
-                <span className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">
-                  🔍
-                </span>
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={handleSearch}
-                  className="w-full rounded-3xl border border-slate-200 bg-white px-12 py-3 text-sm text-slate-900 outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-200"
-                  placeholder="Buscar productos..."
-                />
-                <button
-                  type="button"
-                  onClick={() => setMobileSearchOpen(false)}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 transition hover:text-slate-900"
-                  aria-label="Cerrar búsqueda"
-                >
-                  ✕
-                </button>
-              </div>
-            </div>
-          )}
-          <article className="absolute inset-x-4 top-16 z-30 mx-auto flex max-w-4xl flex-col gap-4 px-4 text-left text-white sm:top-24 sm:px-6 lg:left-16 lg:top-28 lg:max-w-3xl lg:px-0">
-            <span className="hidden lg:inline-flex rounded-full bg-blue-600/15 w-65 px-3 py-1 text-sm font-semibold uppercase tracking-[0.26em] text-blue-200">
-              NEW COLLECTION 2024
-            </span>
-            <h2 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-              Redefine Your{" "}
-              <span className="lg:text-blue-400">Everyday Style</span>
-            </h2>
-            <p className="max-w-xl text-sm text-slate-200 sm:text-base">
-              Explore our curated selection of premium electronics and
-              high-fashion apparel tailored for the modern lifestyle.
-            </p>
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-              <button className="inline-flex w-full items-center justify-center rounded-2xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 sm:w-auto active:scale-90">
-                Shop Collection
-              </button>
-              <button className="inline-flex lg:hidden w-full items-center justify-center rounded-2xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20 sm:w-auto active:scale-90">
-                View Lookbook
-              </button>
-              <button className="hidden lg:inline-flex w-full items-center justify-center rounded-2xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/20 sm:w-auto active:scale-90">
-                View Deal
-              </button>
-            </div>
-          </article>
-        </section>
-      )}
     </>
   );
 }

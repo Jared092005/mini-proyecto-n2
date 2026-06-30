@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Loading from "./Loading";
 
-export default function Productos({ searchQuery = "" }) {
+export default function Productos({ searchQuery = "", selectedCategory = "" }) {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [categoryLoading, setCategoryLoading] = useState(false);
 
   useEffect(() => {
     async function traerDatos() {
@@ -21,17 +23,32 @@ export default function Productos({ searchQuery = "" }) {
     traerDatos();
   }, []);
 
+  useEffect(() => {
+    setCategoryLoading(true);
+    const timer = setTimeout(() => setCategoryLoading(false), 500);
+    return () => clearTimeout(timer);
+  }, [selectedCategory]);
+
   if (loading) {
-    return <div className="p-8 text-center text-lg">Cargando productos...</div>;
+    return <Loading />;
+  }
+
+  if (categoryLoading) {
+    return <Loading />;
   }
 
   const term = searchQuery.trim().toLowerCase();
   const filteredProductos = productos.filter((producto) => {
-    if (!term) return true;
-    return (
+    const matchesSearch =
+      !term ||
       producto.title.toLowerCase().includes(term) ||
-      producto.category.toLowerCase().includes(term)
-    );
+      producto.category.toLowerCase().includes(term);
+
+    const matchesCategory =
+      !selectedCategory ||
+      producto.category.toLowerCase() === selectedCategory.toLowerCase();
+
+    return matchesSearch && matchesCategory;
   });
 
   return (

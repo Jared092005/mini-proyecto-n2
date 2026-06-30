@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import SearchBar from "../components/SearchBar";
 import FooterMobile from "../components/FooterMobile";
 import FooterDesktop from "../components/FooterDesktop";
+import Loading from "../components/Loading";
 
 export default function ProductPage() {
   const { id } = useParams();
@@ -27,11 +28,7 @@ export default function ProductPage() {
   }, [id]);
 
   if (loading) {
-    return (
-      <div className="p-8 text-center text-lg min-h-screen flex items-center justify-center">
-        Cargando producto...
-      </div>
-    );
+    return <Loading />;
   }
 
   if (!producto) {
@@ -94,10 +91,10 @@ export default function ProductPage() {
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">
+              <h3 className="text-lg font-semibold text-slate-900">
                 Descripción
               </h3>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="mt-2 text-sm leading-7 text-slate-600">
                 {producto.description}
               </p>
             </div>
@@ -105,9 +102,9 @@ export default function ProductPage() {
             <div className="space-y-4 pt-6 border-t border-slate-200">
               <div className="flex items-baseline gap-3">
                 <span className="text-4xl font-bold text-blue-700">
-                  ${producto.price.toFixed(2)}
+                  ${Number(producto.price || 0).toFixed(2)}
                 </span>
-                <span className="text-sm text-slate-500">USD</span>
+                <span className="text-sm text-slate-500">Envío gratis</span>
               </div>
 
               <div className="flex gap-3 pt-4">

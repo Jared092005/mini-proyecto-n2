@@ -8,6 +8,8 @@ export default function SearchBar({
   searchQuery = "",
   onSearch,
   showBanner = true,
+  selectedCategory = "",
+  onCategoryChange,
 }) {
   const [mobileSearchOpen, setMobileSearchOpen] = useState(false);
 
@@ -41,16 +43,64 @@ export default function SearchBar({
 
           <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-between lg:ml-12">
             <div className="flex items-center gap-8 text-lg font-medium text-gray-600">
-              <p className="cursor-pointer hover:text-blue-600 transition">
+              <p
+                onClick={() =>
+                  onCategoryChange?.(
+                    selectedCategory === "electronics" ? "" : "electronics",
+                  )
+                }
+                className={`cursor-pointer transition ${
+                  selectedCategory === "electronics"
+                    ? "text-blue-600 font-semibold"
+                    : "hover:text-blue-600"
+                }`}
+              >
                 Electronics
               </p>
-              <p className="cursor-pointer hover:text-blue-600 transition">
+              <p
+                onClick={() =>
+                  onCategoryChange?.(
+                    selectedCategory === "jewelery" ? "" : "jewelery",
+                  )
+                }
+                className={`cursor-pointer transition ${
+                  selectedCategory === "jewelery"
+                    ? "text-blue-600 font-semibold"
+                    : "hover:text-blue-600"
+                }`}
+              >
                 Jewelry
               </p>
-              <p className="cursor-pointer hover:text-blue-600 transition">
+              <p
+                onClick={() =>
+                  onCategoryChange?.(
+                    selectedCategory === "men's clothing"
+                      ? ""
+                      : "men's clothing",
+                  )
+                }
+                className={`cursor-pointer transition ${
+                  selectedCategory === "men's clothing"
+                    ? "text-blue-600 font-semibold"
+                    : "hover:text-blue-600"
+                }`}
+              >
                 Men's
               </p>
-              <p className="cursor-pointer hover:text-blue-600 transition">
+              <p
+                onClick={() =>
+                  onCategoryChange?.(
+                    selectedCategory === "women's clothing"
+                      ? ""
+                      : "women's clothing",
+                  )
+                }
+                className={`cursor-pointer transition ${
+                  selectedCategory === "women's clothing"
+                    ? "text-blue-600 font-semibold"
+                    : "hover:text-blue-600"
+                }`}
+              >
                 Women's
               </p>
             </div>
